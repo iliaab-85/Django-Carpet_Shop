@@ -1,0 +1,44 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}پیغام ها{% endblock %}
+
+{% block body %}
+
+<div>
+    <div style="width:7%;color:black;">
+        <p style="font-size: large;padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;width: max-content;">پیغام ها</p><br><br>
+    </div>
+    {% for item in Group_List %}
+        {% if item.number != 0 %}
+            <div class="Message-Div">
+                {% if Res == "Seller" %}
+                    <a href="/Farshtore/Chat_Seller">
+                {% elif Res == "User" %}
+                    <a href="/Farshtore/Chat_User">
+                {% else %}
+                    <a href="/Farshtore/Chat_Support">
+                {% endif %}
+                    <div style="padding: 15px 0 0 0;">
+                        <div class="row main align-items-center">
+                            <div class="col-1">
+                                <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                                </svg>
+                            </div>
+                            <div class="col-10" style="font-size: 1rem;color:black;">
+                                <bdi>
+                                    <span style="color:red;">{{ item.number }}</span>
+                                    پیام از
+                                    <span style="color:orange;">{{ item.name }}</span>
+                                    دارید
+                                </bdi>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

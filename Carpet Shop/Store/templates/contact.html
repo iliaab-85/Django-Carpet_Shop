@@ -1,0 +1,112 @@
+{% extends "_layout.html" %}
+
+{% block title %}ارتباط با ما{% endblock %}
+
+{% load static %}
+<html lang="en">
+
+{% block body %}
+<style>
+    .page-header {
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+    background: url({% static 'img/Farsh-1.jpg' %}) top right no-repeat;
+    background-size: cover;
+}
+</style>
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" style="margin-top:10rem;" data-wow-delay="0.1s">
+        <div>
+            <div class="container">
+                <h1 class="display-3 mb-3 animated slideInDown header-slider">ارتباط با ما</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb mb-0" style="font-size: medium;">
+                        <li class="active"><a class="header-slider" style="color:lightgreen;font-size: 1.5rem;" href="/Farshtore/Home">خانه</a></li>
+                        <li class="active"><a class="header-slider" style="color:lightgreen;cursor:pointer;font-size: 1.5rem;"><bdi>صفحات /&nbsp</bdi></a></li>
+                        <li class="active" aria-current="page"><a class="header-slider" style="color:lightgreen;cursor:pointer;font-size: 1.5rem;"><bdi>ارتباط با ما /&nbsp</bdi></a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="text-black d-flex flex-column justify-content-center h-100 p-5" style="border-radius:10px;background:orange;">
+                        <h5 class="text-white">با ما تماس بگیرید</h5>
+                        <p class="mb-5" style="font-size: 1.15rem;color:black;display: flex;align-items: center;">
+                            <svg style="color:lightgreen;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                              <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                              <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                            </svg>+98935 125 5903
+                        </p>
+                        <h5 class="text-white">به ما ایمیل بزنید</h5>
+                        <p class="mb-5" style="font-size: 1.15rem;color:black;display: flex;align-items: center;">
+                            <svg style="color:lightgreen;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill me-3" viewBox="0 0 16 16">
+                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                            </svg>wildcard350@gmail.com
+                        </p>
+                        <h5 class="text-white">آدرس محل کار</h5>
+                        <p class="mb-5" style="font-size: 1.15rem;color:black;display: flex;align-items: center;">
+                            <svg style="color:lightgreen;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>123 Street, New York, USA
+                        </p>
+                        <h5 class="text-white">ما را دنبال کنید</h5>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-telegram"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" style="border-radius:10px;" id="email" placeholder="Your Email">
+                                    <label for="email">ایمیل شما</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" style="text-align:right;border-radius:10px;" id="name" placeholder="نام شما">
+                                    <label for="name">نام</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" style="text-align:right;border-radius:10px;" placeholder="Subject">
+                                    <label for="subject">موضوع</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px;text-align:right;border-radius:10px;"></textarea>
+                                    <label for="message">پیام</label>
+                                </div>
+                            </div>
+                            <div class="col-12" style="text-align: right;">
+                                <button class="btn rounded-pill py-3 px-5" style="background:lightgreen;color:black;" type="submit">ارسال پیام</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+</body>
+{% endblock %}
+
+
+</html>

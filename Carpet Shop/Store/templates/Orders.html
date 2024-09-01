@@ -1,0 +1,39 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}سفارش ها{% endblock %}
+
+{% block body %}
+
+<div>
+
+    <div style="border: none;border-bottom: 1px solid;">
+        <p style="font-size: large;padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">تاریخچه سفارشات</p><br><br>
+        <nav class="navbar navbar-expand-lg" style="font-size:large;margin-bottom: -1.5%;">
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">فعلی</p>
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">تحویل گرفته</p>
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">مرجوع شده</p>
+            <p class="hover" style="padding: 7px;">لغو شده</p>
+        </nav>
+    </div>
+
+    <div class="Product-Div">
+        <a href="/Farshtore/Order">
+            <div>
+                <div class="row main align-items-center">
+                    <div class="col-1">
+                        <img style="width: 100px;height: 100px;" src="/../static/img/empty-cart.svg">
+                    </div>
+                    <div class="col" style="font-size: 1rem;color:black;">
+                        <bdi><span> تعداد محصول :</span><span style="color:orange;">&nbsp;{{ length }}</span></bdi>
+                    </div>
+                    <div class="col" style="font-size: 1rem;color:black;">
+                        <bdi><span> قیمت کل :</span> <span style="color:orange;">{{ price }}&nbsp;</span>تومان</bdi>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+{% endblock %}

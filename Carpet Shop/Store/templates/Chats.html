@@ -1,0 +1,49 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}لیست چت ها{% endblock %}
+
+{% block body %}
+
+<div>
+    <div style="border: none;border-bottom: 1px solid;">
+        <p style="font-size: large;padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">چت</p><br><br>
+        <nav class="navbar navbar-expand-lg" style="font-size:large;margin-bottom: -1.5%;">
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">فعلی</p>
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">تمام شده</p>
+            <p class="hover" style="margin-left:1.5%;padding: 7px;">لغو شده</p>
+            <p class="hover" style="padding: 7px;">لیست چت ها</p>
+        </nav>
+    </div>
+    {% for item in List_Name %}
+        <div class="Message-Div">
+            {% if Res == "Seller" %}
+                <a href="/Farshtore/Chat_Seller">
+
+            {% elif Res == "User" %}
+                <a href="/Farshtore/User_Chat">
+            {% else %}
+                <a href="/Farshtore/Support_Chat">
+            {% endif %}
+                <div style="padding: 15px 0 0 0;">
+                    <div class="row main align-items-center">
+                        <div class="col-1">
+                            <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"></path>
+                                <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path>
+                            </svg>
+                        </div>
+                        <div class="col-10" style="font-size: 1rem;color:black;">
+                            <bdi>
+                                چت
+                                <span style="color:orange;">{{ item }}</span>
+                            </bdi>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

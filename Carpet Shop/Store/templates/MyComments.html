@@ -1,0 +1,33 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}نظرات من{% endblock %}
+
+{% block body %}
+
+<div>
+    <div style="width:7%;color:black;">
+        <p style="font-size: large;padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">نظر ها</p><br><br>
+    </div>
+
+    {% for item in MyComment %}
+    <div class="Message-Div">
+        <a href="/Farshtore/product_information/{{ item.Product_Code }}">
+            <div style="padding: 15px 0 0 0;">
+                <div class="row main align-items-center">
+                    <div class="col-1">
+                        <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"></path>
+                            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path>
+                        </svg>
+                    </div>
+                        <div class="col-10" style="font-size: 1rem;color:black;">
+                            <bdi>{{ item.Message }}</bdi>
+                        </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

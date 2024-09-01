@@ -1,0 +1,218 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}ویرایش حساب{% endblock %}
+
+{% block body %}
+
+<div>
+    <p class="header-info Header-group-form">اطلاعات شرکت</p>
+    <form method="post" action="" class="frm-Edit-Seller">
+        {% csrf_token %}
+        <div class="Edit_S_Form">
+            {% for item in form %}
+
+                {{ item.label_tag }}
+                {{ item }}
+                {% if item.name == "Company_Name" %}
+                    <div class="Company_Type" hidden="hidden">{{ Co_Type }}</div>
+                    <select name="Company_Type" id="id_Company_Type" class="Seller_Leg border-color form-control" style="direction: rtl;color: #6c757d;">
+                      <option value="" selected hidden>نوع شرکت</option>
+                      {% for Types in Company_Types %}
+                        <option value="{{ Types }}">{{ Types }}</option>
+                      {% endfor %}
+                    </select>
+                {% elif item.name == "Company_Economic_Code" %}
+                    </div><hr style="background: black;opacity: 1;margin-top:0;">
+                    <p class="header-info Header-group-form">اطلاعات دیگر</p>
+                    <div class="Edit_S_Form">
+                {% elif item.name == "ShopName" %}
+                    </div><hr style="background: black;opacity: 1;margin-top:3rem;">
+                    <p class="header-info Header-group-form">امنیت</p>
+                    <div>
+                {% elif item.name == "rePassword" %}
+                    </div>
+            {% endif %}
+
+
+        {% endfor %}
+        <br><br>
+        <ul class="Error-List-Leg" hidden>
+
+        </ul>
+        <div>
+            <input class="Change_Info_Seller" style=" margin-top: 0;" type="button" value="ثبت اطلاعات">
+        </div>
+    </form>
+</div>
+<!-- Modal -->
+<div class="modal" id="myModal" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ثبت اطلاعات کاربری</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+        لطفا اطلاعات شخصی خود را وراد کنید. نام و نام خانوادگی باید با اطلاعاتی که وارد می کنید همخوانی داشته باشد.
+          <br>
+          {% for item in form %}
+          <div>
+              <br>
+            {{ item }}
+          </div>
+          {% endfor %}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">بررسی اطلاعات</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal2" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ثبت اطلاعات کاربری</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+        لطفا اطلاعات شخصی خود را وراد کنید. نام و نام خانوادگی باید با اطلاعاتی که وارد می کنید همخوانی داشته باشد.
+          <br>
+          {% for item in form %}
+          <div>
+              <br>
+            {{ item }}
+          </div>
+          {% endfor %}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">بررسی اطلاعات</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="myModal3" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ثبت شماره موبایل</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+        لطفا اطلاعات شخصی خود را وراد کنید. نام و نام خانوادگی باید با اطلاعاتی که وارد می کنید همخوانی داشته باشد.
+          <br><br>
+          <input type="text" class="form-control" id="id_Phone" style="border-radius:10px;" placeholder="09123456789">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">دریافت کد تایید و تغییر شماره</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal4" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ثبت ایمیل</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+          <input type="email" class="form-control" id="id_Email" style="border-radius:10px;" placeholder="test123@gmail.com">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">تایید</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal5" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">افزودن رمز عبور</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+          <input type="password" class="form-control" id="id_Password" style="border-radius:10px;" placeholder="رمز عبور جدید*"><br>
+          <ol>
+              <li>شامل عدد</li>
+              <li>حداقل 8 حرف</li>
+              <li>شامل علامت های (!@#$%&*^)</li>
+              <li>شامل یک حرف بزرگ و کوچک</li>
+          </ol><br>
+          <input type="password" class="form-control" id="id_Password_again" style="border-radius:10px;" placeholder="تکرار رمز عبور جدید*">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">تغییر رمز عبور</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal7" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">تاریخ تولد</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+          <input type="text" class="form-control" id="id_day" style="border-radius:10px;cursor:pointer;display:inline-block;width:130px;padding:10px;" value="" placeholder="روز"><br>
+          <input type="text" class="form-control" id="id_month" style="border-radius:10px;cursor:pointer;display:inline-block;width:130px;padding:10px;" value="" placeholder="ماه"><br>
+          <input type="text" class="form-control" id="id_year" style="border-radius:10px;cursor:pointer;display:inline-block;width:130px;padding:10px;" value="" placeholder="سال"><br>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" data-dismiss="modal">تغییر رمز عبور</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

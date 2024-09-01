@@ -1,0 +1,517 @@
+{% load static %}
+<html lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon-32x32.png' %}">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo_style.css' %}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="Res">{{ Res }}</div>
+
+{% if Res == "Seller" %}
+    {% for item in user %}
+    <div id="user_id">{{ item.Seller_Id }}</div>
+    {% endfor %}
+
+{% elif Res == "User" %}
+    {% for item in user %}
+    <div id="user_id">{{ item.Id }}</div>
+    {% endfor %}
+
+{% elif Res == "Support" %}
+    {% for item in user %}
+    <div id="user_id">{{ item.Id }}</div>
+    {% endfor %}
+{% endif %}
+
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+<div class="container-fluid fixed-top px-0 bg-white" style="height:21.8%;border-bottom: 1px solid">
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" style="margin-top:1.5%;font-size: 10px;" data-wow-delay="0.1s">
+                <a style="font-size: 200%;margin-left: 2%;" href="/Farshtore/Order" class="nav-item nav-link text-body bg-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                        <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+                    </svg>
+                </a>
+                <div class="nav-item dropdown" style="margin-left: 2%">
+                    {% if user_st.State %}
+                        {% if Res == "User" %}
+                            {% for item in user %}
+                                <a href="{{ href }}{{ item.Id }}" style="font-size: 200%;cursor:pointer;{{ style }}" class="nav-link text-body bg-black">{{ text }}
+                                    {% with inclu=icon %}
+                                    {% include inclu %}
+                                    {% endwith %}
+                                </a>
+                            {% endfor %}
+
+                        {% elif Res == "Seller" %}
+                            {% for item in user %}
+                                <a href="{{ href }}{{ item.Seller_Id }}" style="font-size: 200%;cursor:pointer;{{ style }}" class="nav-link text-body bg-black">{{ text }}
+                                    {% with inclu=icon %}
+                                    {% include inclu %}
+                                    {% endwith %}
+                                </a>
+                            {% endfor %}
+
+                        {% elif Res == "Support" %}
+                            {% for item in user %}
+                                <a href="{{ href }}{{ item.Id }}" style="font-size: 200%;cursor:pointer;{{ style }}" class="nav-link text-body bg-black">{{ text }}
+                                    {% with inclu=icon %}
+                                    {% include inclu %}
+                                    {% endwith %}
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+
+                    {% else %}
+                            <a href="{{ href }}" style="font-size: 200%;cursor:pointer;{{ style }}" class="nav-link {{ icons }} text-body bg-black">{{ text }}
+                            </a>
+                    {% endif %}
+
+                    {% with inclu=incl %}
+                    {% include inclu %}
+                    {% endwith %}
+                </div>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="margin-right: 3%;" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <div class="Search">
+                        <div style="width: 417px;height: 36px;cursor: text;background-color: aliceblue;position: absolute; border-top-left-radius:10px;border-bottom-left-radius: 10px;">
+                            <input type="text" class="input_Search">
+                        </div>
+                        <button class="btn_Search" onclick="Search_Product()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="/Farshtore/Home">
+                    <h1 class="fw-bold text-primary m-0" style="font-size: 300%;"><span style="color:orange;">Farsh</span><span style="color:lightgreen;">tore</span></h1>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light text-end" dir="rtl" style="margin-top:2%;margin-right:2.5%;align-items: baseline;">
+            <div class="nav-item dropdown" style="width:130px;margin-right: 3rem;cursor:pointer;">
+                <div style="color:black;display: flex;align-items: center;margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;width:25px;height:25px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                    </span>دسته بندی ها
+                </div>
+                {% with inclul=incll %}
+                {% include inclul %}
+                {% endwith %}
+            </div>
+            <a style="margin:0 0.5% 0.5% 0.5%;"><div style="color:black;cursor: default;" class="">|</div></a>
+            <a href="/Farshtore/product/None/None" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                <div style="color:black;display: flex;align-items: center;" class="">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
+                            <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"/>
+                        </svg>
+                    </span>پر فروش ها
+                </div>
+            </a>
+            <a href="/Farshtore/product/None/None" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;"><div style="color:black;" class=""><span><img src="{% static 'img/dis.svg' %}" style="width:45px;margin-left: 5px;"></span>تخفیف ها</div></a>
+            <a href="/Farshtore/product/None/None" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                <div style="color:black;display: flex;align-items: center;" class="">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                        </svg>
+                    </span>پر بازدید ترین ها
+                </div>
+            </a>
+            <a href="/Farshtore/product/None/None" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                <div style="color:black;display: flex;align-items: center;" class="">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                        </svg>
+                    </span>پیشنهاد ها
+                </div>
+            </a>
+            <a style="margin:0 0.5% 0.5% 0.5%;"><div style="color:black;cursor: default;" class="">|</div></a>
+            <a href="/Farshtore/question" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                <div style="color:black;display: flex;align-items: center;" class="">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                        </svg>
+                    </span>سوالی دارید؟
+                </div>
+            </a>
+            <a href="/Farshtore/Home" style="margin:0 0.5% 0.5% 0.5%;padding: 0.5% 0.5% 0.5% 0.5%;">
+                <div style="color:black;display: flex;align-items: center;" class="">
+                    <span>
+                        <svg style="color:orange;margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                        </svg>
+                    </span>خانه
+                </div>
+            </a>
+        </nav>
+    </div>
+
+    <div class="templatemo-flex-row" style="margin-top:220px;margin-right:10%;border-radius:15px;" dir="rtl">
+      <div class="templatemo-sidebar">
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav" style="font-size:125%;border-radius:15px;">
+          {% if Res == "Seller" %}
+            <ul style="padding:15px 0 15px 0;">
+              <li>
+                  <div>
+                      {% if Res == "Seller" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Seller_Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% elif Res == "User" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% elif Res == "Supporter" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% endif %}
+                  </div>
+              </li>
+                <li>
+                <a href="/Farshtore/AddProduct" class="dropdown-item_side">
+                    <svg style="color: orange;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>&nbsp;&nbsp;&nbsp;اضافه کردن محصول
+                </a>
+                </li>
+            <li>
+                <a href="/Farshtore/Profile/Wallet" class="{{ active2 }} dropdown-item_side">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                        <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"/>
+                        <path d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;کیف پول
+                </a>
+            </li>
+            <li>
+                <a href="/Farshtore/Profile/Activity" class="{{ active3 }} dropdown-item_side">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;فعالیت های من
+                </a>
+            </li>
+            <li>
+                <a href="/Farshtore/Subscribation" class="{{ active4 }} dropdown-item_side">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" style="color:orange;" viewBox="0 0 16 16">
+                            <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
+                        </svg>
+                    </i>&nbsp;&nbsp;&nbsp;اشتراک فرش تور
+                </a>
+            </li>
+            <li>
+                <a class="{{ active5 }} dropdown-item_side" href="/Farshtore/Profile/Orders">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                        <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;سفارش ها
+                </a>
+            </li>
+            <li>
+                <a class="{{ active6 }} dropdown-item_side" href="/Farshtore/Profile/Product_Likes">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                    </svg>&nbsp;&nbsp;&nbsp;علاقه مندی ها
+                </a>
+            </li>
+            <li>
+                <a class="{{ active7 }} dropdown-item_side" href="/Farshtore/Profile/Chat">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                    </svg>&nbsp;&nbsp;&nbsp;چت
+                </a>
+            </li>
+            <li>
+                <a class="{{ active8 }} dropdown-item_side" href="/Farshtore/Profile/MyComments">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                    </svg>&nbsp;&nbsp;&nbsp;نظرات من
+                </a>
+            </li>
+            <li>
+                <a class="{{ active9 }} dropdown-item_side" href="/Farshtore/Profile/Message">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"></path>
+                    </svg>&nbsp;&nbsp;&nbsp;پیغام ها
+                    <span style="color:red;">&nbsp;{{ User_Niotif }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="{{ active10 }} dropdown-item_side" href="/Farshtore/Profile/user_history">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;بازدید های اخیر
+                </a>
+            </li>
+              {% if Res == "Seller" %}
+                  {% for item in user %}
+                    <li>
+                        <a class="{{ active11 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Seller_Id }}">
+                            <i style="margin: 0;" class="fa fa-user fa-fw"></i>
+                            &nbsp;&nbsp;&nbsp;اطلاعات حساب کاربری
+                        </a>
+                    </li>
+                {% endfor %}
+
+              {% elif Res == "User" %}
+                  {% for item in user %}
+                    <li>
+                        <a class="{{ active11 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}">
+                            <i style="margin: 0;" class="fa fa-user fa-fw"></i>
+                            &nbsp;&nbsp;&nbsp;اطلاعات حساب کاربری
+                        </a>
+                    </li>
+                {% endfor %}
+
+              {% elif Res == "Supporter" %}
+                  {% for item in user %}
+                    <li>
+                        <a class="{{ active11 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}">
+                            <i style="margin: 0;" class="fa fa-user fa-fw"></i>
+                            &nbsp;&nbsp;&nbsp;اطلاعات حساب کاربری
+                        </a>
+                    </li>
+                {% endfor %}
+              {% endif %}
+              <li>
+                  <a class="dropdown-item_side_L" style="cursor:pointer;" data-toggle="modal" data-target="#Logout_Modal">
+                      <svg style="color:red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                          <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>&nbsp;&nbsp;&nbsp;خروج از حساب کاربری
+                  </a>
+              </li>
+          </ul>
+          {% else %}
+            <ul style="padding:15px 0 15px 0;">
+              <li>
+                  <div>
+                      {% if Res == "Seller" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Seller_Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% elif Res == "User" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% elif Res == "Support" %}
+                          {% for item in user %}
+                            <a style="font-size: larger;" class="{{ active1 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}"><i style="margin: 0;" class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;{{ item.Phone }}</a>
+                          {% endfor %}
+
+                      {% endif %}
+                  </div>
+              </li>
+            <li>
+                <a href="/Farshtore/Profile/Wallet" class="{{ active2 }} dropdown-item_side">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                        <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z"/>
+                        <path d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;کیف پول
+                </a>
+            </li>
+            <li>
+                <a href="/Farshtore/Profile/Activity" class="{{ active3 }} dropdown-item_side">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;فعالیت های من
+                </a>
+            </li>
+            <li>
+                <a href="/Farshtore/Subscribation" class="{{ active4 }} dropdown-item_side">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" style="color:orange;" viewBox="0 0 16 16">
+                            <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
+                        </svg>
+                    </i>&nbsp;&nbsp;&nbsp;اشتراک فرش تور
+                </a>
+            </li>
+            <li>
+                <a class="{{ active5 }} dropdown-item_side" href="/Farshtore/Profile/Orders">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                        <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;سفارش ها
+                </a>
+            </li>
+            <li>
+                <a class="{{ active6 }} dropdown-item_side" href="/Farshtore/Profile/Product_Likes">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                    </svg>&nbsp;&nbsp;&nbsp;علاقه مندی ها
+                </a>
+            </li>
+            <li>
+                <a class="{{ active7 }} dropdown-item_side" href="/Farshtore/Profile/Chat">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                    </svg>&nbsp;&nbsp;&nbsp;چت
+                </a>
+            </li>
+            <li>
+                <a class="{{ active8 }} dropdown-item_side" href="/Farshtore/Profile/MyComments">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                    </svg>&nbsp;&nbsp;&nbsp;نظرات من
+                </a>
+            </li>
+            <li>
+                <a class="{{ active9 }} dropdown-item_side" href="/Farshtore/Profile/Message">
+                    <div>
+                        <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"></path>
+                        </svg>&nbsp;&nbsp;&nbsp;پیغام ها
+                        <span style="color:red;">&nbsp;{{ User_Niotif }}</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="{{ active10 }} dropdown-item_side" href="/Farshtore/Profile/user_history">
+                    <svg style="color:orange;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                    </svg>&nbsp;&nbsp;&nbsp;بازدید های اخیر
+                </a>
+            </li>
+              {% if Res == "Seller" %}
+                  {% for item in user %}
+                    <li>
+                        <a class="{{ active11 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Seller_Id }}">
+                            <i style="margin: 0;" class="fa fa-user fa-fw"></i>
+                            &nbsp;&nbsp;&nbsp;اطلاعات حساب کاربری
+                        </a>
+                    </li>
+                {% endfor %}
+
+              {% else %}
+                  {% for item in user %}
+                    <li>
+                        <a class="{{ active11 }} dropdown-item_side" href="/Farshtore/EditProfile/{{ item.Id }}">
+                            <i style="margin: 0;" class="fa fa-user fa-fw"></i>
+                            &nbsp;&nbsp;&nbsp;اطلاعات حساب کاربری
+                        </a>
+                    </li>
+                {% endfor %}
+              {% endif %}
+              <li>
+                  <a class="dropdown-item_side_L" style="cursor:pointer;" data-toggle="modal" data-target="#Logout_Modal">
+                      <svg style="color:red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                          <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>&nbsp;&nbsp;&nbsp;خروج از حساب کاربری
+                  </a>
+              </li>
+          </ul>
+          {% endif %}
+        </nav>
+      </div>
+
+        <div class="modal" id="Logout_Modal" style="position:fixed;top:75%;left:60%;transform:translate(-50%,-50%);" dir="rtl">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:184%;border-radius:15px;padding:0 20px 10px 20px;">
+
+                  <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">از حساب کاربری خارج می‌شوید؟</h4>
+                        <svg style="width: 25px;height: 25px;cursor:pointer;" data-dismiss="modal" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </div>
+
+                  <!-- Modal body -->
+                    <div class="modal-body" style="font-size:15px;">
+                        با خروج از حساب کاربری به سبد خرید فعلی‌تان دسترسی نخواهید داشت. هروقت بخواهید می‌توانید مجددا وارد شوید و خریدتان را ادامه دهید.
+                        <br><br>
+                    </div>
+
+                  <!-- Modal footer -->
+                    <div class="text-start">
+                        <button style="border-radius:9px;border:none;font-size:18px;padding:10px;background:lightgreen;" class="do-not-hover" type="button" data-dismiss="modal">انصراف</button>
+                        <a href="/Farshtore/Logout">
+                            <button style="border-radius:9px;border:none;font-size:18px;padding:10px;" type="button" class="dontover dropdown-item_L">خروج از حساب</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-max">
+            <div class="div-profile">
+                {% block body %} {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap_bundle_min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/boot-bundle.js' %}"></script>
+    <script src="{% static 'js/spinner.js' %}"></script>
+    <script src="{% static 'js/get_text_profile.js' %}"></script>
+    <script src="{% static 'js/info.js' %}"></script>
+    <script src="{% static 'js/dropdown-header.js' %}"></script>
+    <script src="{% static 'js/Sort_CLick.js' %}"></script>
+    <script src="{% static 'js/Search.js' %}"></script>
+    <script src="{{ func }}"></script>
+    <!-- Template Javascript -->
+    <script src="{{ script }}"></script>
+    {% comment %}
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endcomment %}
+
+</body>
+</html>

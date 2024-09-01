@@ -1,0 +1,57 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ورود</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon-32x32.png' %}">
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/RegForm.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!--
+    -->
+</head>
+<body style="background-image: url({% static 'img/body-bg.jpg' %});">
+
+    <div class="main" style="margin-top: 10%;">
+
+        <div class="container" style="width:35%;">
+            <form dir="rtl" method="POST" class="appointment-form frm_valid_login" id="appointment-form">
+                {% csrf_token %}
+                <h2 style="text-align:center;">ورود</h2>
+                <div class="form-group-1">
+                    {% for item in form %}
+                        <div>
+                            {{ item }}<br>
+                        </div>
+                    {% endfor %}
+                </div>
+                <center>
+                    <div>
+                        <p class="Error-List Valid_log" hidden></p>
+                        <button style="border-radius: 10px;width: auto;padding: 3% 6% 3% 6%;background-color: darkseagreen;color: white;border: 0px;" class="Check_valid" type="button">ورود</button><br><br>
+                        <a href="/Farshtore/register">
+                            <button style="padding: 3% 5% 3% 5%;background-color: red;border-radius: 10px;width: auto;color: white;border: 0px;" type="button">ثبت نام</button>
+                        </a>
+                        <p style="text-align:center;color:black;font-size:20px;">در صورت نداشتن حساب یکی بسازید</p>
+                    </div>
+                </center>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'js/Login.js' %}"></script>
+    <script src="{% static 'js/dropdown-header.js' %}"></script>
+    <script src="{% static 'js/Sort_CLick.js' %}"></script>
+    <script src="{% static 'js/Search.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

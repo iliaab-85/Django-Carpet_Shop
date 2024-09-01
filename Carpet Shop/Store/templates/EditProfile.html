@@ -1,0 +1,100 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}ویرایش حساب{% endblock %}
+
+{% block body %}
+
+<div>
+    <p class="header-info" style="padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">اطلاعات شخصی</p>
+    <form method="post" action="" class="frm-Edit">
+        {% csrf_token %}
+        {% for item in form %}
+
+            {% if item.name == "Date_of_birth" %}
+                {{ item.label_tag }}
+                <input data-toggle="modal" data-target="#myModal_datebirth" type="button" placeholder="تاریخ تولد" value="" class="form-control border-color datebirth_profile" required>
+                <div hidden>{{ item }}</div>
+                <br><br><hr>
+                <p class="header-info" style="padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">ارتباط با شما</p>
+            {% elif item.name == "Email" %}
+                {{ item.label_tag }}
+                {{ item }}
+                <br><br><hr>
+                <p class="header-info" style="padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">کارکرد شما در سایت</p>
+            {% elif item.name == "redirect" %}
+                {{ item.label_tag }}
+                {{ item }}
+                <br><br><hr>
+                <p class="header-info" style="padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;">گذرواژه</p>
+            {% else %}
+                {{ item.label_tag }}
+                {{ item }}
+            {% endif %}
+
+        {% endfor %}
+        <br><br>
+        <ul class="Error-List" hidden>
+
+        </ul>
+        <div>
+            <input class="Change_Info" type="button" value="ثبت اطلاعات">
+        </div>
+    </form>
+</div>
+<!-- Modal -->
+<div class="modal" id="myModal_datebirth" style="position:fixed;top:75%;left:50%;transform:translate(-50%,-50%);">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:15px;padding:0 20px 10px 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">تاریخ تولد</h4>
+        <div class="close bi bi-x" style="font-size:30px;color:black;cursor:pointer;" data-dismiss="modal"></div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size:15px;">
+          <p style="text-align:center;">تاریخ تولد خود را وارد کنید</p>
+          <br>
+          <div style="display: flex;justify-content: space-evenly;margin-bottom: 1rem;">
+              <div class="day" style="display: flex;flex-direction: column;">
+                  <label style="margin-bottom: 1rem;text-align:center;">روز</label>
+                  <select class="days dropdown_datebirth" style="width: 4rem;">
+                      <option selected hidden value=""></option>
+                      {% for item in Day_List %}
+                          <option value="{{ item }}">{{ item }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              <div class="month" style="display: flex;flex-direction: column;">
+                  <label style="margin-bottom: 1rem;text-align:center;">ماه</label>
+                  <select class="months dropdown_datebirth">
+                      <option selected hidden value=""></option>
+                      {% for item in Month_List %}
+                          <option value="{{ item }}">{{ item }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              <div class="year" style="display: flex;flex-direction: column">
+                  <label style="margin-bottom: 1rem;text-align:center;">سال</label>
+                  <select class="years dropdown_datebirth" style="width: 4rem;">
+                      <option selected hidden value=""></option>
+                      {% for item in Year_List %}
+                          <option value="{{ item }}">{{ item }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="text-center">
+          <p class="Error_list"></p>
+        <button style="top:0;left:0;" class="btn-style btn_datebirth_save" type="button">ثبت اطلاعات</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

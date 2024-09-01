@@ -1,0 +1,54 @@
+{% extends "_layout_panel.html" %}
+{% load static %}
+
+{% block title %}فعالیت های من{% endblock %}
+
+{% block body %}
+
+<div>
+    <div style="width:10%;color:black;">
+        <p style="font-size: large;padding: 0 5px 0 0;font-weight: bold;border: none;border-right: 2px solid orange;width: max-content;">فعالیت ها</p><br><br>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+        <a style="cursor:pointer;">
+            <div>
+                <div class="padd">
+                    <div style="margin-left:9rem;">
+                        <img src="{% static 'img/status-processing.svg' %}">
+                        <div style="display: inline-table;margin-right: 10px;">
+                            <p>{{ Count_Order }} سفارش</p>
+                            <p>جاری</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a style="cursor:pointer;">
+            <div>
+                <div class="padd">
+                    <div style="margin-left:9rem;">
+                        <img src="{% static 'img/status-delivered.svg' %}">
+                        <div style="display: inline-table;">
+                            <p>0 سفارش</p>
+                            <p>تحویل گرفته</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a style="cursor:pointer;">
+            <div>
+                <div class="endpadd">
+                    <div>
+                        <img src="{% static 'img/status-returned.svg' %}">
+                        <div style="display: inline-table;">
+                            <p>0 سفارش</p>
+                            <p>مرجوع شده</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </nav>
+</div>
+{% endblock %}

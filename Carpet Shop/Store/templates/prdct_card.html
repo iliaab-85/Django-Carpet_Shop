@@ -1,0 +1,238 @@
+{% extends '_layout.html' %}
+{% load static %}
+
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>اطلاعات محصول</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon-32x32.png' %}">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="stylesheet" href="{% static 'css/Titillium.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Roboto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel='stylesheet' href="{% static 'css/foundation.css' %}">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{% static 'css/prdct_card.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Chat_Product.css' %}">
+    <link href="{% static 'css/bootstrap.min.c.css' %}" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<main class="main">
+    <p class="Product_Code" hidden>{{ prdct_card.Product_Code }}</p>
+    <p class="Chat_Code" hidden>{{ prdct_card.Chat_Code }}</p>
+    <div class="mainWrapper">
+        <div class="mainBackground clearfix">
+            <div class="">
+                <div class="column small-centered">
+                    <div class="productCard_block">
+                        <div class="row Product" style="height: fit-content;">
+                            <div class="small-12 large-6 columns">
+                                <div class="productCard_leftSide clearfix">
+                                    <div class="sliderBlock">
+                                        <ul class="sliderBlock_items">
+                                            <li class="sliderBlock_items__itemPhoto sliderBlock_items__showing">
+                                                <img src="https://github.com/BlackStar1991/CardProduct/blob/master/app/img/goods/item1/phones1.png?raw=true" alt="headphones">
+                                            </li>
+                                            <li class="sliderBlock_items__itemPhoto">
+                                                <img src="https://github.com/BlackStar1991/CardProduct/blob/master/app/img/goods/item1/phones2.png?raw=true"  alt="headphones">
+                                            </li>
+                                            <li class="sliderBlock_items__itemPhoto">
+                                                <img src="https://github.com/BlackStar1991/CardProduct/blob/master/app/img/goods/item1/phones3.png?raw=true"  alt="headphones">
+                                            </li>
+                                            <li class="sliderBlock_items__itemPhoto">
+                                                <img src="https://github.com/BlackStar1991/CardProduct/blob/master/app/img/goods/item1/phones4.png?raw=true"  alt="headphones">
+                                            </li>
+                                            <li class="sliderBlock_items__itemPhoto">
+                                                <img src="https://github.com/BlackStar1991/CardProduct/blob/master/app/img/goods/item1/phones5.png?raw=true"  alt="headphones">
+                                            </li>
+                                        </ul>
+                                        <div class="sliderBlock_controls">
+                                            <div class="sliderBlock_controls__navigatin">
+                                                <div class="sliderBlock_controls__wrapper">
+                                                    <div class="sliderBlock_controls__arrow sliderBlock_controls__arrowBackward">
+                                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="sliderBlock_controls__arrow sliderBlock_controls__arrowForward">
+                                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="sliderBlock_positionControls">
+                                                <li class="sliderBlock_positionControls__paginatorItem sliderBlock_positionControls__active"></li>
+                                                <li class="sliderBlock_positionControls__paginatorItem"></li>
+                                                <li class="sliderBlock_positionControls__paginatorItem"></li>
+                                                <li class="sliderBlock_positionControls__paginatorItem"></li>
+                                                <li class="sliderBlock_positionControls__paginatorItem"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 large-6 columns">
+                                <div class="productCard_rightSide">
+                                    <div class="block_product">
+                                        <div class="block_informationAboutDevice">
+
+                                            <h4 style="text-align: center;font-family: 'Yekan';">{{ prdct_card.Product_Title }}</h4>
+
+                                            <h2 class="block_name block_name__addName" style="text-align:center;width: 100%;margin: 20px 0 20px 0;font-family: 'Yekan';">{{ item.Product_Title }}</h2>
+
+                                            <div class="block_descriptionInformation">
+                                                <bdi style="overflow: auto;">{{ prdct_card.Product_Caption }}</bdi>
+                                            </div>
+                                            <div class="row">
+                                                <div class="large-6 small-12 column left-align">
+                                                    <div class="block_price">
+                                                        <bdi style="margin-right: 10%;" class="block_price__currency"><span>{{ prdct_card.Product_Price_Final }}</span><span style="font-size: 1.3rem;"> تومان</span></bdi>
+                                                        <bdi style="color: #eb4b4b;" class="block_price__currency"><del>{{ prdct_card.Product_Price }}</del><span style="font-size: 1.3rem;"> تومان</span></bdi>
+                                                        <p class="block_price__shipping">&nbsp;</p>
+                                                    </div>
+                                                </div><br>
+
+                                                <div class="prdct_info">
+                                                        <div class="block_specificationInformation_table">
+                                                            {% if Ghali == "Empty" %}
+                                                                <div class="Empty" style="width:auto;">
+                                                                    <div class="empty-center">
+                                                                        <img src="{% static 'img/empty-cart.svg' %}" style="width: 140px;">
+                                                                    </div>
+                                                                    <p class="text-center">اطلاعاتی برای این محصول وجود ندارد</p>
+                                                                </div>
+                                                            {% else %}
+                                                                    <div style="border-top-right-radius: 10px;font-size: 1.5rem;padding: 5px;margin-bottom: 1rem;border-bottom: 1px solid;">مشخصات محصول</div>
+                                                            {% for item in Info_Product %}
+                                                                <div style="border-bottom: 1px solid;padding: 10px;margin-bottom: 10px;">{{ item }}</div>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                <div class="large-6 small-12 column end" style="position: relative;left: 30rem;">
+                                                    <div class="block_goodColor">
+                                                        <span class="text_specification">&nbsp;</span>
+                                                        <div class="block_goodColor__allColors" style="display: flex;align-items: center;flex-direction: row-reverse;">
+                                                            <p style="margin: 0 15px 0 0px;text-align: end;color: orange;">
+                                                                <span>نام فروشنده : </span><span>{{ Seller_Name }}</span>
+                                                            </p>
+                                                            <p style="margin: 0 15px 0 0px;text-align: end;display: flex;align-items: center;">
+                                                                <span>
+                                                                    <a href="/Farshtore/Seller_Chat/{{ prdct_card.Chat_Code }}">
+                                                                        <svg style="margin-right: 1rem;cursor:pointer;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-left-dots Chat" viewBox="0 0 16 16">
+                                                                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"></path>
+                                                                            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path>
+                                                                        </svg>
+                                                                    </a>
+                                                                </span>
+                                                                <span>صحبت با فروشنده</span>
+                                                            </p>
+                                                            <p>
+                                                                <button class="button button_addToCard" style="border-radius:12px">
+                                                                    اضافه به سبد خرید
+                                                                </button>
+                                                            </p>
+                                                                <div class="block_quantity__chooseBlock">
+                                                        <span style="margin-right: 8px;">تعداد</span>
+                                                            <input class="block_quantity__number" style="text-align:center;border-radius:10px;" name="quantityNumber"
+                                                                   type="text" min="1" value="1">
+                                                            <div class="group-number">
+                                                                <button class="block_quantity__button block_quantity__up"></button>
+                                                                <button class="block_quantity__button block_quantity__down"></button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Comment">
+                            <div class="chat">
+                        <div class="chat-header clearfix">
+                            <div class="row row-v" style="font-size: large;">
+                                <p style="color:orange;position:relative;right: 43%;">کامنت ها</p>
+                                <svg style="width: 25px;height: 25px;cursor:pointer;" data-dismiss="modal" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x close" viewBox="0 0 16 16">
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="messages">
+                            <ul class="m-b-0 Place_Messages">
+
+                            </ul>
+                        </div>
+                        <div class="chat-message clearfix">
+                            <div class="input-group mb-0 input-v">
+                                <div class="bottom_wrapper clearfix">
+                                    <div class="message_input_wrapper">
+                                        <bdi>
+                                            <textarea class="message_input Msg-aria" style="" placeholder="... متن را اینجا وارد کنید"></textarea>
+                                        </bdi>
+                                    </div>
+                                    <div class="block_rating clearfix" style="width: auto;">
+                                                <fieldset class="block_rating__stars" style="width: auto;">
+                                                    <input type="radio" id="star5" name="rating" value="5"/><label
+                                                        class="full" for="star5" title="عالی"></label>
+                                                    <input type="radio" id="star4half" name="rating"
+                                                           value="4.5"/><label class="half" for="star4half"
+                                                                                        title="عالی"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4"/><label
+                                                        class="full" for="star4" title="خوب"></label>
+                                                    <input type="radio" id="star3half" name="rating"
+                                                           value="3.5"/><label class="half" for="star3half"
+                                                                                        title="خوب"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3"/><label
+                                                        class="full" for="star3" title="متوسط"></label>
+                                                    <input type="radio" id="star2half" name="rating"
+                                                           value="2.5"/><label class="half" for="star2half"
+                                                                                        title="متوسط"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2"/><label
+                                                        class="full" for="star2"
+                                                        title="بد"></label>
+                                                    <input type="radio" id="star1half" name="rating"
+                                                           value="1.5"/><label class="half" for="star1half"
+                                                                                        title="بد"></label>
+                                                    <input type="radio" id="star1" name="rating" value="1"/><label
+                                                        class="full" for="star1"
+                                                        title="خیلی بد"></label>
+                                                    <input type="radio" id="starhalf" name="rating"
+                                                           value="0.5"/><label
+                                                        class="half" for="starhalf"
+                                                        title="خیلی بد"></label>
+                                                </fieldset>
+                                            </div>
+                                    <div class="send_message centered-text">ارسال</div>
+                                </div>
+                            </div><br>
+                                <p class="text-right error" style="color: red;margin: 0 2rem 0 0;margin-top: 2rem;" hidden="hidden"></p>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/spinner.js' %}"></script>
+    <script  src="{% static 'js/prdct_card.js' %}"></script>
+    <script  src="{% static 'js/view.js' %}"></script>
+    <script  src="{% static 'js/addToCard.js' %}"></script>
+    <script  src="{% static 'js/Chat_Product.js' %}"></script>
+    <script  src="{% static 'js/Product_Chat.js' %}"></script>
+    <script src="{% static 'js/dropdown-header.js' %}"></script>
+    <script src="{% static 'js/Sort_CLick.js' %}"></script>
+    <script src="{% static 'js/Search.js' %}"></script>
+{% endblock %}
